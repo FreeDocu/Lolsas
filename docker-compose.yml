@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: uploader-backend
+    volumes:
+      - ./data:/data
+    restart: always
+
+  nginx:
+    image: nginx:alpine
+    container_name: uploader-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - backend
+    restart: always
