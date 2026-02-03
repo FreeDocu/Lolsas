@@ -1,0 +1,82 @@
+<Application x:Class="LivasModLoader.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:LivasModLoader.ViewModels"
+             xmlns:views="clr-namespace:LivasModLoader.Views"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="CosmicBackground">#0B1021</Color>
+            <Color x:Key="CosmicCard">#1A2340</Color>
+            <Color x:Key="CosmicAccent">#8B5CF6</Color>
+            <Color x:Key="CosmicAccentSecondary">#22D3EE</Color>
+            <Color x:Key="CosmicText">#E5E7EB</Color>
+            <Color x:Key="CosmicMuted">#94A3B8</Color>
+
+            <SolidColorBrush x:Key="CosmicBackgroundBrush" Color="{StaticResource CosmicBackground}" />
+            <SolidColorBrush x:Key="CosmicCardBrush" Color="{StaticResource CosmicCard}" />
+            <SolidColorBrush x:Key="CosmicAccentBrush" Color="{StaticResource CosmicAccent}" />
+            <SolidColorBrush x:Key="CosmicAccentSecondaryBrush" Color="{StaticResource CosmicAccentSecondary}" />
+            <SolidColorBrush x:Key="CosmicTextBrush" Color="{StaticResource CosmicText}" />
+            <SolidColorBrush x:Key="CosmicMutedBrush" Color="{StaticResource CosmicMuted}" />
+
+            <LinearGradientBrush x:Key="CosmicGradient" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#3B82F6" Offset="0" />
+                <GradientStop Color="#8B5CF6" Offset="0.5" />
+                <GradientStop Color="#22D3EE" Offset="1" />
+            </LinearGradientBrush>
+
+            <Style x:Key="CosmicCardStyle" TargetType="Border">
+                <Setter Property="CornerRadius" Value="18" />
+                <Setter Property="Background" Value="{StaticResource CosmicCardBrush}" />
+                <Setter Property="BorderBrush" Value="#33FFFFFF" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Padding" Value="20" />
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="#55000000" BlurRadius="24" ShadowDepth="0" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+                <Setter Property="Foreground" Value="{StaticResource CosmicTextBrush}" />
+                <Setter Property="Background" Value="{StaticResource CosmicAccentBrush}" />
+                <Setter Property="Padding" Value="12,6" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="12">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="SecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource PrimaryButtonStyle}">
+                <Setter Property="Background" Value="#334B5563" />
+            </Style>
+
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource CosmicTextBrush}" />
+            </Style>
+
+            <DataTemplate DataType="{x:Type vm:LauncherViewModel}">
+                <views:LauncherView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ModManagerViewModel}">
+                <views:ModManagerView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ServerViewModel}">
+                <views:ServerView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+                <views:SettingsView />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

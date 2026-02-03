@@ -1,0 +1,59 @@
+<UserControl x:Class="LivasModLoader.Views.ServerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+    <ScrollViewer>
+        <StackPanel>
+            <TextBlock Text="Сервер" FontSize="22" FontWeight="SemiBold" Margin="0,0,0,16" />
+            <Grid Margin="0,0,0,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                    <TextBlock Text="Имя сервера" />
+                    <TextBox Text="{Binding CurrentPreset.Name}" Margin="0,4,0,12" />
+                    <TextBlock Text="Описание сервера" />
+                    <TextBox Text="{Binding CurrentPreset.Description}" Margin="0,4,0,12" />
+                    <TextBlock Text="Пароль" />
+                    <TextBox Text="{Binding CurrentPreset.Password}" Margin="0,4,0,12" />
+                    <CheckBox Content="Использовать бан-лист бэкенда" IsChecked="{Binding CurrentPreset.UseBackendBanList}" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="Стартовая карта" />
+                    <ComboBox ItemsSource="{Binding MapOptions}" SelectedItem="{Binding CurrentPreset.StartingMap}" Margin="0,4,0,12" />
+                    <TextBlock Text="Игровой порт" />
+                    <TextBox Text="{Binding CurrentPreset.GamePort}" Margin="0,4,0,12" />
+                    <TextBlock Text="RCON порт" />
+                    <TextBox Text="{Binding CurrentPreset.RconPort}" Margin="0,4,0,12" />
+                    <TextBlock Text="A2S порт" />
+                    <TextBox Text="{Binding CurrentPreset.A2SPort}" Margin="0,4,0,12" />
+                    <TextBlock Text="Ping порт" />
+                    <TextBox Text="{Binding CurrentPreset.PingPort}" Margin="0,4,0,12" />
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                <Button Content="Запустить сервер" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding LaunchServerCommand}" Margin="0,0,12,0" />
+                <Button Content="Запустить Headless" Style="{StaticResource SecondaryButtonStyle}" Command="{Binding LaunchHeadlessCommand}" Margin="0,0,12,0" />
+                <Button Content="Остановить" Style="{StaticResource SecondaryButtonStyle}" Command="{Binding StopCommand}" />
+            </StackPanel>
+
+            <Border Background="#1A2238" CornerRadius="12" Padding="12" Margin="0,0,0,12">
+                <TextBlock Text="Предпросмотр аргументов:" FontWeight="SemiBold" />
+                <TextBlock Text="{Binding PreviewArguments}" TextWrapping="Wrap" Foreground="{StaticResource CosmicMutedBrush}" />
+            </Border>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Статус: " />
+                <TextBlock Text="{Binding ProcessStatus}" FontWeight="SemiBold" />
+                <TextBlock Text="  PID: " Margin="12,0,0,0" />
+                <TextBlock Text="{Binding ProcessId}" />
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

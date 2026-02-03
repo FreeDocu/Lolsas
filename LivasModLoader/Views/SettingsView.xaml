@@ -1,0 +1,56 @@
+<UserControl x:Class="LivasModLoader.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+    <ScrollViewer>
+        <StackPanel>
+            <TextBlock Text="Настройки" FontSize="22" FontWeight="SemiBold" Margin="0,0,0,16" />
+
+            <TextBlock Text="Тип установки" />
+            <ComboBox ItemsSource="{Binding InstallationTypes}" SelectedItem="{Binding Config.InstallationType}" Margin="0,4,0,12" />
+
+            <TextBlock Text="Steam AppId" />
+            <TextBox Text="{Binding Config.SteamAppId}" Margin="0,4,0,12" />
+
+            <TextBlock Text="Steam URI" />
+            <TextBox Text="{Binding Config.SteamLaunchUri}" Margin="0,4,0,12" />
+
+            <TextBlock Text="Epic URI" />
+            <TextBox Text="{Binding Config.EpicLaunchUri}" Margin="0,4,0,12" />
+
+            <TextBlock Text="Путь к игре" />
+            <TextBox Text="{Binding Config.GameExecutablePath}" Margin="0,4,0,12" />
+
+            <TextBlock Text="Папка модов игры" />
+            <TextBox Text="{Binding Config.GameModsPath}" Margin="0,4,0,12" />
+
+            <TextBlock Text="Библиотека модов" />
+            <TextBox Text="{Binding Config.ModsLibraryPath}" Margin="0,4,0,12" />
+
+            <TextBlock Text="Путь к серверу" />
+            <TextBox Text="{Binding Config.ServerExecutablePath}" Margin="0,4,0,12" />
+
+            <TextBlock Text="Доп. мод-актеры" />
+            <TextBox Text="{Binding Config.AdditionalModActors}" Margin="0,4,0,12" />
+
+            <TextBlock Text="CLI аргументы" />
+            <TextBox Text="{Binding Config.GameArguments}" Margin="0,4,0,12" />
+
+            <CheckBox Content="Авто-обновление плагинов и загрузок" IsChecked="{Binding Config.EnableAutomaticUpdates}" Margin="0,0,0,12" />
+
+            <TextBlock Text="Backend для браузера серверов" />
+            <TextBox Text="{Binding Config.ServerBrowserBackendUrl}" Margin="0,4,0,12" />
+
+            <TextBlock Text="Endpoint обновлений приложения" />
+            <TextBox Text="{Binding Config.AppUpdateEndpoint}" Margin="0,4,0,12" />
+
+            <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                <Button Content="Сохранить" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding SaveCommand}" Margin="0,0,12,0" />
+                <Button Content="Очистить установку" Style="{StaticResource SecondaryButtonStyle}" Command="{Binding CleanUpInstallationCommand}" Margin="0,0,12,0" />
+                <Button Content="Проверить обновления" Style="{StaticResource SecondaryButtonStyle}" Command="{Binding CheckForUpdatesCommand}" />
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
